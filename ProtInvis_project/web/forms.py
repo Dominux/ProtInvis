@@ -8,4 +8,4 @@ class AAForm(FlaskForm):
 	the_dye = SelectField('Краситель', 
 						  choices=dyes_for_form, 
 						  validators=[DataRequired()])
-	submit = SubmitField('Паехалиии!')
+	submit = SubmitField('Готово')

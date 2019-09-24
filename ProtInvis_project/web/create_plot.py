@@ -1,9 +1,10 @@
 from Bio.SeqUtils.ProtParam import ProteinAnalysis  
 from requests_html import HTMLSession
 from constants import dyes_list, aa_list
-import matplotlib.pyplot as plt
+import plotly
+from plotly import graph_objs as go
 import pandas as pd
-import io
+import json
 
 
 session = HTMLSession()
@@ -66,44 +67,43 @@ def after_dye(data, the_dye):
             new_data.remove(protein)
     return new_data, invis_data
 
-def two_dim_electrophoresis(proteome_datas, input_id):
+def make_scatter(proteome_datas, input_id):
     invis_data = proteome_datas[1][1]
     proteome_datas[1] = proteome_datas[1][0]
-    plt.figure(figsize=(19.2, 10.8))
-    plt.style.use(['bmh'])
-    if len(proteome_datas[1]) < 10:
-        alpha = 0.78
-        s = 68
-    elif len(proteome_datas[1]) < 100:
-        alpha = 0.7
-        s = 48
-    elif len(proteome_datas[1]) < 1000:
-        alpha = 0.62
-        s = 28
-    elif len(proteome_datas[1]) < 10000:
-        alpha = 0.54
-        s = 20
-    else:
-        alpha = 0.46
-        s = 14
+    fig = go.Figure()
     for data in range(len(proteome_datas)):
-        x = [proteome_datas[data][M][2][1] for M in range(len(proteome_datas[data]))]
-        y = [proteome_datas[data][M][2][0] for M in range(len(proteome_datas[data]))]
-        plt.subplot(1, 2, data + 1)
-        plt.scatter(x, y, s=s, c='#cb4bd4', alpha=alpha)
+        iter_data = proteome_datas[data]
+        x = [iter_data[M][2][1] for M in range(len(iter_data))]
+        y = [iter_data[M][2][0] for M in range(len(iter_data))]
+        text = [iter_data[M][0] for M in range(len(iter_data))]
         if data == 0:
-            title_name = 'All proteins'
+            color = 'red'
+            legend_name = 'Invisible'
+            marker_line_width = 0
         else:
-            title_name = 'Real result'
-        plt.title(title_name)
-        plt.xlabel('Isoelectric point')
-        plt.ylabel('Molecular weight')
-        plt.xlim(0, 14)
-        plt.ylim(250000, 0)
-    bytes_image = io.BytesIO()
-    plt.savefig(bytes_image, format='png')
-    bytes_image.seek(0)
-    return bytes_image
+            color = 'limegreen'
+            legend_name = 'Visible'
+            marker_line_width = 1
+        fig.add_trace(go.Scatter(
+                            x=x, 
+                            y=y,
+                            text=text,
+                            name=legend_name,
+                            mode='markers',
+                            marker=dict(
+                                    color=color, 
+                                    line=dict(width=marker_line_width),
+                                    size=8), 
+                        ))
+    fig.update_layout(
+                autosize=False, 
+                height=1000, 
+                width=1000,
+                xaxis=dict(title='Isoelectric point'),
+                yaxis=dict(title='Molecular weight', autorange='reversed'),
+            )
+    graphJSON = json.dumps(fig, cls=plotly.utils.PlotlyJSONEncoder)
+    return graphJSON
 
 def ploter(input_id, the_dye, session=session, dyes_list=dyes_list):
     the_dye = dyes_list[the_dye]
@@ -116,4 +116,4 @@ def ploter(input_id, the_dye, session=session, dyes_list=dyes_list):
         for uniprot_id in list(input_id.split()):
             proteome = get_seq(uniprot_id)
             data.append((uniprot_id, aa_percent(proteome), get_x_y(proteome)))
-    return two_dim_electrophoresis([data, after_dye(data, the_dye)], input_id)
+    return make_scatter([data, after_dye(data, the_dye)], input_id)
