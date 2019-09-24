@@ -1,0 +1,116 @@
+* {padding: 0em; margin: 0em;}
+
+body {
+	display: grid;
+	grid-template-rows: 150px 950px 100px;
+  	text-align: center;
+  	color: white;
+  	font: Helvetica;
+}
+
+header {
+	background: green;
+}
+
+	.text {
+		margin: 32px 600px 0px 0px;
+		font-size: 65px;
+	}
+
+.content {
+	margin-top: 2em;
+	color: black;
+}
+	.message {
+		text-align: left;
+		margin: 0 300px 0 300px;
+		font-size: 20px
+	}
+		ul {
+			margin-left: 2em;
+		}
+			.ul-2 {
+				margin-left: 2em; 
+			}
+
+footer {
+	background-color: green;
+	padding-top: 2em;
+}
+
+.form-style-6 {
+	font: 95%;
+	max-width: 400px;
+	margin: 10px auto;
+	padding: 100px;
+}
+.form-style-6 h1 {
+	background: green;
+	padding: 20px 0;
+	font-size: 140%;
+	font-weight: 300;
+	text-align: center;
+	color: #fff;
+	margin: -16px -16px 16px -16px;
+}
+.form-style-6 input[type="text"],
+.form-style-6 input[type="date"],
+.form-style-6 input[type="datetime"],
+.form-style-6 input[type="email"],
+.form-style-6 input[type="number"],
+.form-style-6 input[type="search"],
+.form-style-6 input[type="time"],
+.form-style-6 input[type="url"],
+.form-style-6 textarea,
+.form-style-6 select {
+	-webkit-transition: all 0.30s ease-in-out;
+	-moz-transition: all 0.30s ease-in-out;
+	-ms-transition: all 0.30s ease-in-out;
+	-o-transition: all 0.30s ease-in-out;
+	outline: none;
+	box-sizing: border-box;
+	-webkit-box-sizing: border-box;
+	-moz-box-sizing: border-box;
+	width: 100%;
+	background: #fff;
+	margin-bottom: 4%;
+	border: 1px solid #ccc;
+	padding: 3%;
+	color: #limegreen;
+	font: 95% Arial, Helvetica, sans-serif;
+}
+
+.form-style-6 input[type="text"]:focus,
+.form-style-6 input[type="date"]:focus,
+.form-style-6 input[type="datetime"]:focus,
+.form-style-6 input[type="email"]:focus,
+.form-style-6 input[type="number"]:focus,
+.form-style-6 input[type="search"]:focus,
+.form-style-6 input[type="time"]:focus,
+.form-style-6 input[type="url"]:focus,
+.form-style-6 select:focus
+{
+	box-shadow: 0 0 5px #limegreen;
+	padding: 3%;
+	border: 1px solid #limegreen;
+}
+
+.form-style-6 input[type="submit"],
+.form-style-6 input[type="button"]{
+	box-sizing: border-box;
+	-webkit-box-sizing: border-box;
+	-moz-box-sizing: border-box;
+	width: 100%;
+	padding: 3%;
+	background: green;
+	border-bottom: 2px solid shadow;
+	border-top-style: none;
+	border-right-style: none;
+	border-left-style: none;	
+	color: #fff;
+}
+
+.form-style-6 input[type="submit"]:hover,
+.form-style-6 input[type="button"]:hover{
+	background: #limegreen;
+}

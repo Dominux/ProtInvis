@@ -1,0 +1,25 @@
+{% extends 'base.html' %}
+
+{% block content %}
+        <div class="form-style-6">
+            <h1>Введите Uniprot id</h1>
+            <form action="" method="post">
+                {{ form.hidden_tag() }}
+                <p>
+                    {{ form.uniprot_ids.label }}<br>
+                    {{ form.uniprot_ids(size=32) }}<br>
+                    {% for error in form.uniprot_ids.errors %}
+                        <span style="color: red;">[{{ error }}]</span>
+                    {% endfor %}
+                </p>   
+                <p>
+                    {{ form.the_dye.label }}<br>
+                    {{ form.the_dye(size=1) }}<br>
+                    {% for error in form.the_dye.errors %}
+                        <span style="color: red;">[{{ error }}]</span>
+                    {% endfor %}
+                </p>
+                <p>{{ form.submit() }}</p>
+            </form>
+        </div>
+{% endblock %}
