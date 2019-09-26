@@ -9,3 +9,4 @@ class AAForm(FlaskForm):
 						  choices=dyes_for_form, 
 						  validators=[DataRequired()])
 	submit = SubmitField('Готово')
+	
