@@ -1,6 +1,6 @@
 from Bio.SeqUtils.ProtParam import ProteinAnalysis  
 from requests_html import HTMLSession
-from constants import dyes_list, aa_list
+from constants import dyes_list, aa_list, a_replace
 import plotly
 from plotly import graph_objs as go
 import pandas as pd
@@ -39,7 +39,8 @@ def get_proteome(proteome_id, session=session):
                         uniprot_id = line[4:name_terminator]
                         protein_dict[uniprot_id] = str()
                     else:
-                        line = line.replace('X', '')
+                        for amino in a_replace:
+                            line = line.replace(amino, a_replace[amino])
                         protein_dict[uniprot_id] += line
                 return protein_dict
         except:
