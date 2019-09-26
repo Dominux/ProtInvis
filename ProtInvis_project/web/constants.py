@@ -20,6 +20,7 @@ dyes_for_form = [
 	    ('Zn-имидазольное негативное окрашивание', 'Zn-имидазольное негативное окрашивание'),
 	    ]
 
+<<<<<<< HEAD
 a_replace = {
 			'B': 'N',
 			'Z': 'Q',
@@ -28,3 +29,6 @@ a_replace = {
 		}
 
 aa_list = list('ACDEFGHIKLMNOPQRSTUVWY')
+=======
+aa_list = list('ABCDEFGHIJKLMNOPQRSTUVWXYZ')
+>>>>>>> 33bda76ad6a59478773d9cf10be959aec9e6e565
