@@ -89,6 +89,7 @@ def make_scatter(proteome_datas, input_id):
                             x=x, 
                             y=y,
                             text=text,
+                            hoverinfo="text",
                             name=legend_name,
                             mode='markers',
                             marker=dict(

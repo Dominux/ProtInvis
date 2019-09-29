@@ -21,10 +21,10 @@ dyes_for_form = [
 	    ]
 
 a_replace = {
-			'B': 'N',
-			'Z': 'Q',
-			'J': 'L',
-			'X': '',
+		'B': 'N',
+		'Z': 'Q',
+		'J': 'L',
+		'X': '',
 		}
 
 aa_list = list('ACDEFGHIKLMNOPQRSTUVWY')
