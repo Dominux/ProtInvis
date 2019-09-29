@@ -57,6 +57,10 @@ header {
 			font-size: 18px;
 		}
 
+		a.kek:visited {
+			  color: blue;
+			}
+
 		ol {
 			padding: 1em 0px 0px 0px;
 		}
