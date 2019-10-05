@@ -4,15 +4,7 @@
     <div id="chart" class="chart"></div>
     <script type="text/javascript">
         let graphs = {{ graphJSON|safe }};
-        Plotly.plot('chart', graphs, {});        
+        Plotly.plot('chart', graphs, {});   
     </script>
-    <script type="text/javascript">
-    	chart.on('plotly_click', function(data){
-    	    let pts = '';
-    	    for (let i=0; i < data.points.length; i++){
-    	        pts = data.points[i].text;
-    	    }
-    	    window.open('https://www.uniprot.org/uniprot/'+pts, '_blank');
-    	});
-    </script>
+    <script src="../static/scripts/script.js"></script>
 {% endblock %}
