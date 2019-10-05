@@ -1,0 +1,1 @@
+web: gunicorn --chdir ProtInvis_project/ webapp:app
