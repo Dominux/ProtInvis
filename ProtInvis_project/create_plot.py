@@ -56,8 +56,8 @@ def aa_percent(aa_seq):
     return protein_aa
 
 def get_x_y(aa_seq):
-    return [ProteinAnalysis(aa_seq).molecular_weight(), 
-            ProteinAnalysis(aa_seq).isoelectric_point()]
+    return (ProteinAnalysis(aa_seq).molecular_weight(), 
+            ProteinAnalysis(aa_seq).isoelectric_point())
 
 def after_dye(data, the_dye):
     invis_data = list()
@@ -66,12 +66,10 @@ def after_dye(data, the_dye):
         if [protein[1][aa] for aa in the_dye if protein[1][aa] > 0] == []:
             invis_data.append(protein)
             new_data.remove(protein)
-    return new_data, invis_data
+    return (invis_data, new_data)
 
 def make_scatter(proteome_datas, input_id):
-    invis_data = proteome_datas[1][1]
-    proteome_datas[1] = proteome_datas[1][0]
-    fig = go.Figure(layout=go.Layout(hovermode='closest'))
+    fig = go.Figure()
     for data in range(len(proteome_datas)):
         iter_data = proteome_datas[data]
         x = [iter_data[M][2][1] for M in range(len(iter_data))]
@@ -118,4 +116,4 @@ def ploter(input_id, the_dye, session=session, dyes_list=dyes_list):
         for uniprot_id in list(input_id.split()):
             proteome = get_seq(uniprot_id)
             data.append((uniprot_id, aa_percent(proteome), get_x_y(proteome)))
-    return make_scatter([data, after_dye(data, the_dye)], input_id)
+    return make_scatter(after_dye(data, the_dye), input_id)
