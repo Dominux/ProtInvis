@@ -20,7 +20,12 @@ def get_seq(uniprot_id, session=session):
                     start += 1
                     if aa == '\n':
                         break
-                return ''.join(str(line.replace('X', '')) for line in list(result.text[start:].split('\n')))
+                aa_seq = str()
+                for line in list(result.text[start:].split('\n')):
+                    for amino in a_replace:
+                        line = line.replace(amino, a_replace[amino])
+                    aa_seq += line
+                return aa_seq
         except:
             pass
 
@@ -30,13 +35,15 @@ def get_proteome(proteome_id, session=session):
         try:
             result = session.get(URL)
             if result.ok:
-                href = [x for x in list(result.html.absolute_links) if x.startswith('f')][-1]
+                for href in list(result.html.absolute_links):
+                    if href.startswith('f'):
+                        if href.split('/')[8] == "reference_proteomes":
+                            break
                 table = pd.read_csv(href, compression='gzip', sep='\n', header=None, na_filter=False)
                 protein_dict = dict()
                 for line in table.iloc[:,0]:
                     if line.startswith('>'):
-                        name_terminator = line.find('|', 4)
-                        uniprot_id = line[4:name_terminator]
+                        uniprot_id = line.split('|')[1]
                         protein_dict[uniprot_id] = str()
                     else:
                         for amino in a_replace:
@@ -68,7 +75,7 @@ def after_dye(data, the_dye):
             new_data.remove(protein)
     return (invis_data, new_data)
 
-def make_scatter(proteome_datas, input_id):
+def make_scatter(proteome_datas, max_mol):
     fig = go.Figure()
     for data in range(len(proteome_datas)):
         iter_data = proteome_datas[data]
@@ -93,14 +100,15 @@ def make_scatter(proteome_datas, input_id):
                             marker=dict(
                                     color=color, 
                                     line=dict(width=marker_line_width),
-                                    size=8), 
+                                    size=8
+                                    ), 
                         ))
     fig.update_layout(
                 autosize=False, 
                 height=1000,
                 width=1000,
-                xaxis=dict(title='Isoelectric point'),
-                yaxis=dict(title='Molecular weight', autorange='reversed'),
+                xaxis=dict(title='Isoelectric point', range=[0, 14]),
+                yaxis=dict(title='Molecular weight', range=[max_mol*1.1, 0]),
             )
     graphJSON = json.dumps(fig, cls=plotly.utils.PlotlyJSONEncoder)
     return graphJSON
@@ -109,11 +117,9 @@ def ploter(input_id, the_dye, session=session, dyes_list=dyes_list):
     the_dye = dyes_list[the_dye]
     if input_id.startswith('U'):
         proteome = get_proteome(input_id, session)
-        data = [(uniprot_id, aa_percent(proteome[uniprot_id]), 
-            get_x_y(proteome[uniprot_id])) for uniprot_id in proteome.keys()]
     else:
-        data = list()
-        for uniprot_id in list(input_id.split()):
-            proteome = get_seq(uniprot_id)
-            data.append((uniprot_id, aa_percent(proteome), get_x_y(proteome)))
-    return make_scatter(after_dye(data, the_dye), input_id)
+        proteome = {uniprot_id: get_seq(uniprot_id) for uniprot_id in list(input_id.split())}
+    data = [(uniprot_id, aa_percent(proteome[uniprot_id]), 
+            get_x_y(proteome[uniprot_id])) for uniprot_id in proteome.keys()]
+    max_mol = max([_[2][0] for _ in data])
+    return make_scatter(after_dye(data, the_dye), max_mol)
