@@ -31,13 +31,12 @@
 
             .protinvis_label {
                 padding: 5% 0 0 16%;
-                top: 0;
                 color: #111;
-                font-size: 180px;
+                font-size: 200px;
                 font-family: "NTR";
                 text-decoration: none;
                 text-shadow: 
-                            0px 0px 5px rgba(127, 127, 127, 0.75),
+                            0px 0px 7px rgba(127, 127, 127, 0.75),
                             0px 0px 15px rgba(17, 17, 17, 0.75),
                             0px 0px 20px rgba(127, 127, 127, 0.5);
             }
@@ -59,6 +58,14 @@
             border-radius: 50px;
             box-shadow: inset 0px 0px 19px 2px rgba(17,17,17,1);
         }
+
+            .form-style {
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                text-align: center;
+                height: 100%;
+            }
     </style>
     <script src="scripts/parallax.js"></script>
 </head>
@@ -73,7 +80,7 @@
             <li class="layer" data-depth="1.2"><img class="header-image" src="static_images/2.png"></li>
             <li class="layer" data-depth="1.5"><img class="header-image" src="static_images/1.png"></li>
             <li class="layer" data-depth=".9">
-                <a class="protinvis_label h-link" href="base.html">ProtInvis</a>
+                <a class="protinvis_label" href="base.html">ProtInvis</a>
             </li>
         </ul>
         <script>
@@ -86,7 +93,13 @@
 
     <div class="content">
 
-        
+        <div class="form-style">
+            <form action="{% url 'articles:leave_comment' article.id %}" method="POST">
+                <input type="text" required="" placeholder="Uniprot_id" name="uniprot_id"><br>
+                <input name="text" required="" placeholder="Краситель" name="the_dye"></input><br>
+                <button type="submit">Готово</button>
+            </form>
+        </div>
 
     </div>
    
