@@ -5,7 +5,11 @@ import sys
 
 
 def main():
+<<<<<<< HEAD
     os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'ProtInvis.settings')
+=======
+    os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'protinvis.settings')
+>>>>>>> 17713d9524352b6222f95bba5bd46b01edfd9e81
     try:
         from django.core.management import execute_from_command_line
     except ImportError as exc:
