@@ -8,4 +8,4 @@ class ProtInvis_Session(models.Model):
     use_date = models.DateTimeField(auto_now_add=True)
 
     def __str__(self):
-        return f"{self.uniprot_id, self.the_dye}"
+        return f"{self.uniprot_id, self.the_dye, self.use_date.date()}"

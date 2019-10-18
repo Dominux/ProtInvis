@@ -1,6 +1,5 @@
 from django.shortcuts import render, redirect
 from django.views.generic import View
-from django.core.exceptions import ValidationError
 
 from .forms import ProtInvis_SessionForm
 from .create_plot import ploter
@@ -16,15 +15,23 @@ class Index(View):
         bound_form = ProtInvis_SessionForm(request.POST)
 
         if bound_form.is_valid():
-            # new_ps = bound_form.save()
             graphJSON = ploter(bound_form.cleaned_data['uniprot_id'], bound_form.cleaned_data['the_dye'])
-            if isinstance(graphJSON, str):
-                raise ValidationError(f"{graphJSON} not found")
-            request.session['graphJSON'] = graphJSON
-            return redirect(result)
+
+            if graphJSON.startswith('{'):
+                request.session['graphJSON'] = graphJSON
+                bound_form.save()
+                return redirect(result)
+            else:
+                error_message = f"{graphJSON} not found"
+                bound_form.add_error(field='uniprot_id', error=error_message)
+            
         return render(request, self.template, context={'form': bound_form})
 
 def result(request):
-    template = 'protinvis_app/result.html'
     graphJSON = request.session.get('graphJSON')
-    return render(request, template, context={'graphJSON': graphJSON})
+
+    if not graphJSON is None:  
+        template = 'protinvis_app/result.html'
+        return render(request, template, context={'graphJSON': graphJSON})
+    
+    return redirect('Index')
