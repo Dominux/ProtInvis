@@ -1,38 +1,29 @@
 {% extends 'base.html' %}
 
+{% block title %} - Главная{% endblock %}
+
 {% block content %}
-        <div class="main-text">
-            <div class="str">
-                <strong>Uniprot id</strong> – введите:
-                <ol type="1">
-                    <li>Один или более <b>Uniprot id</b> белков через пробел. Пример: <br><i>P12345 Q09876 P13579</i></li> 
-                    <li>Один <b>Uniprot id</b> протеома. Пример:<br><i>U0000568467</i></li>
-                </ol>
+<div class="form-style">
+    <form method="POST">
+        {{ form.hidden_tag() }}
+            <div>
+                {% if form.uniprot_id.errors %}
+                    <div class="errorlist-wrapper">
+                        <p>Ошибка</p>
+                        <div class="errorlist">
+                            {{ form.uniprot_id.errors[0] }}
+                        </div>
+                    </div>
+                {% endif %}
+
+                {{ form.uniprot_id.label }} <br>
+                {{ form.uniprot_id(size=32) }}  <br>
             </div>
-            <br>
-            <div class="str">
-                <strong>Краситель</strong> - выберите краситель
+            <div>
+                {{ form.the_dye.label }} <br>
+                {{ form.the_dye(size=1) }}  <br>
             </div>
-        </div>
-        <div class="form-style-6">
-            <h1>Введите Uniprot id</h1>
-            <form action="" method="post">
-                {{ form.hidden_tag() }}
-                <p>
-                    {{ form.uniprot_ids.label }}<br>
-                    {{ form.uniprot_ids(size=32) }}<br>
-                    {% for error in form.uniprot_ids.errors %}
-                        <span style="color: red;">[{{ error }}]</span>
-                    {% endfor %}
-                </p>   
-                <p>
-                    {{ form.the_dye.label }}<br>
-                    {{ form.the_dye(size=1) }}<br>
-                    {% for error in form.the_dye.errors %}
-                        <span style="color: red;">[{{ error }}]</span>
-                    {% endfor %}
-                </p>
-                <p>{{ form.submit() }}</p>
-            </form>
-        </div>
+        <p>{{ form.submit() }}</p>
+    </form>
+</div>
 {% endblock %}

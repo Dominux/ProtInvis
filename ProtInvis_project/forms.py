@@ -4,7 +4,7 @@ from wtforms.validators import DataRequired, InputRequired
 from constants import dyes_for_form
 
 class AAForm(FlaskForm):
-	uniprot_ids = StringField('Uniprot id', validators=[DataRequired()])
+	uniprot_id = StringField('Uniprot id', validators=[DataRequired()])
 	the_dye = SelectField('Краситель', 
 						  choices=dyes_for_form, 
 						  validators=[DataRequired()])
