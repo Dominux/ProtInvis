@@ -1,4 +1,5 @@
 db.sqlite3
 ProtInvis/__pycache__/                                                                                                                       
 protinvis_app/__pycache__/                                                                                                                   
-protinvis_app/migrations/__pycache__/  
+protinvis_app/migrations/__pycache__/
+protinvis_venv
