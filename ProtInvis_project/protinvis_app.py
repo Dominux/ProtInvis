@@ -10,12 +10,7 @@ app.config['SECRET_KEY'] = os.urandom(32)
 def index():
     form = AAForm()
 
-    print()
-    print(dir(session))
-    print()
-
     if form.validate_on_submit():
-        print(form.uniprot_id.data, form.the_dye.data)
         graphJSON = ploter(form.uniprot_id.data, form.the_dye.data)
 
         if graphJSON.startswith('{'):

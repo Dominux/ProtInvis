@@ -1,1 +1,1 @@
-web: gunicorn --chdir ProtInvis_project/ webapp:app
+web: gunicorn --chdir ProtInvis_project/ protinvis_app:app
