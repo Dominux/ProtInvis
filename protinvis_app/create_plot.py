@@ -27,7 +27,6 @@ def get_seq(uniprot_id, session=session):
                     aa_seq += line
                 return aa_seq
             elif result.status_code == 404:
-                print(f"{uniprot_id} not found!")
                 return uniprot_id
         except:
             pass
@@ -54,7 +53,6 @@ def get_proteome(proteome_id, session=session):
                         protein_dict[uniprot_id] += line
                 return protein_dict
             elif result.status_code == 404:
-                print(f"{proteome_id} not found!")
                 return proteome_id
         except:
             pass
@@ -112,7 +110,10 @@ def make_scatter(proteome_datas, max_mol):
     fig.update_layout(
                 autosize=False, 
                 height=1000,
-                width=1000,
+                width=1300,
+                template="plotly_dark",
+                plot_bgcolor='rgba(247, 247, 247, 1)',
+                paper_bgcolor='rgba(17, 17, 17, 1)',
                 xaxis=dict(title='Isoelectric point', range=[0, 14]),
                 yaxis=dict(title='Molecular weight', range=[max_mol*1.1, 0]),
             )
@@ -127,7 +128,7 @@ def ploter(input_id, the_dye, session=session, dyes_list=dyes_list):
             return input_id
     else:
         proteome = dict()
-        for uniprot_id in list(input_id.split()):
+        for uniprot_id in set(input_id.split()):
             seq = get_seq(uniprot_id)
             if seq == uniprot_id:
                 return uniprot_id

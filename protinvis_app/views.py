@@ -22,7 +22,9 @@ class Index(View):
                 bound_form.save()
                 return redirect(result)
             else:
-                error_message = f"{graphJSON} not found"
+                if len(graphJSON) > 15:
+                    graphJSON = f"{graphJSON[:12]}..."
+                error_message = f"«{graphJSON}» не найдено"
                 bound_form.add_error(field='uniprot_id', error=error_message)
             
         return render(request, self.template, context={'form': bound_form})

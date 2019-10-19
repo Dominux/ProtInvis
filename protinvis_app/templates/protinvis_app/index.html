@@ -6,18 +6,21 @@
 <div class="form-style">
     <form action="{% url 'Index' %}" method="POST">
         {% csrf_token %}
-        {% for field in form %}
             <div>
-                {% if field.errors %}
-                    <div>
-                        {{ field.errors }}
+                {% if form.uniprot_id.errors %}
+                    <div class="errorlist-wrapper">
+                        <p>Ошибка</p>
+                        {{ form.uniprot_id.errors }}
                     </div>
                 {% endif %}
 
-                {{ field.label }} <br>
-                {{ field }}  <br>
+                {{ form.uniprot_id.label }} <br>
+                {{ form.uniprot_id }}  <br>
             </div>
-        {% endfor %}
+            <div>
+                {{ form.the_dye.label }} <br>
+                {{ form.the_dye }}  <br>
+            </div>
         <button type="submit">Готово</button>
     </form>
 </div>

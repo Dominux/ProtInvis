@@ -5,8 +5,8 @@ from .constants import dyes_for_form
 
 
 class ProtInvis_SessionForm(forms.Form):
-    uniprot_id = forms.CharField(max_length=1000)
-    the_dye = forms.ChoiceField(choices=dyes_for_form)
+    uniprot_id = forms.CharField(max_length=1000, label='Uniprot id')
+    the_dye = forms.ChoiceField(choices=dyes_for_form, label='Краситель')
 
     def save(self):
         new_session = ProtInvis_Session.objects.create(
