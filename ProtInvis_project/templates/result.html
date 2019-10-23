@@ -3,7 +3,17 @@
 {% block title %} - Результат{% endblock %}
 
 {% block content %}
-    <div id="chart" class="chart"></div>
+
+    <div class="chart_wrapper">
+
+        {% if form.uniprot_id.data.startswith('U') %}
+            <div class="uniprot_id_data">
+                <h1>Результат для <a class="uniprot_id_data" href="https://www.uniprot.org/proteomes/{{ form.uniprot_id.data }}" target="_blank">{{ form.uniprot_id.data }}</a></h1>
+            </div>
+        {% endif %}
+
+        <div id="chart" class="chart"></div>
+    </div>
 
     <script src="https://cdn.plot.ly/plotly-latest.min.js"></script> 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/d3/3.5.6/d3.min.js"></script>

@@ -14,7 +14,7 @@ def index():
         graphJSON = ploter(form.uniprot_id.data, form.the_dye.data)
 
         if graphJSON.startswith('{'):
-            return render_template('result.html', graphJSON=graphJSON)
+            return render_template('result.html', graphJSON=graphJSON, form=form)
         
         else:
             if len(graphJSON) > 15:

@@ -50,7 +50,7 @@ body {
 }
 
 .content-wrapper {
-    height: 1200px;
+    height: 1400px;
     margin: 0 50px 50px 50px;
     background: #f7f7f7;
     border-radius: 50px;
@@ -65,62 +65,69 @@ body {
         height: 100%;
     }
 
-    form {
-        padding: 100px 50px 100px 50px;
-        border-radius: 25px;
-        box-shadow: 0px 0px 19px 2px rgba(17,17,17,1);
-        background-color: #111;
-        color: #f7f7f7;
-        font-size: 30px;
-    }
+        form {
+            padding: 100px 50px 100px 50px;
+            border-radius: 25px;
+            box-shadow: 0px 0px 19px 2px rgba(17,17,17,1);
+            background-color: #111;
+            color: #f7f7f7;
+            font-size: 30px;
+        }
 
-    input[type="text"], select {
-        transition: all 0.30s ease-in-out;
-        box-sizing: border-box;
-        padding: 3%;
-        margin: 10% 0 10% 0;
-        width: 100%;
-        outline: none;
-        border-radius: 10px;
-    }
+        input[type="text"], select {
+            transition: all 0.30s ease-in-out;
+            box-sizing: border-box;
+            padding: 3%;
+            margin: 10% 0 10% 0;
+            width: 100%;
+            outline: none;
+            border-radius: 10px;
+        }
 
-    input[type="text"]:focus, select:focus {
-        box-shadow: 
-                    inset 0px 0px 3px 2px rgba(17, 17, 17, 1),
-                    inset 0px 0px 7px 2px rgba(221, 214, 133, 1);
-        padding: 3%;
-        border: 2px solid #f7f7f7;
-    }
+        input[type="text"]:focus, select:focus {
+            box-shadow: 
+                        inset 0px 0px 3px 2px rgba(17, 17, 17, 1),
+                        inset 0px 0px 7px 2px rgba(221, 214, 133, 1);
+            padding: 3%;
+            border: 2px solid #f7f7f7;
+        }
 
-    button {
-        border-radius: 10px;
-        box-sizing: border-box;
-        width: 80%;
-        padding: 3%;
-        margin: 30% 0 10% 0;
-        background-color: #f7f7f7;
-        border-bottom: 2px solid shadow;
-        border-top-style: none;
-        border-right-style: none;
-        border-left-style: none;    
-    }
+        button {
+            border-radius: 10px;
+            box-sizing: border-box;
+            width: 80%;
+            padding: 3%;
+            margin: 30% 0 10% 0;
+            background-color: #f7f7f7;
+            border-bottom: 2px solid shadow;
+            border-top-style: none;
+            border-right-style: none;
+            border-left-style: none;    
+        }
 
-    .errorlist-wrapper {
-       background-color: red;
-       border-radius: 10px;
-       margin-bottom: 20%;
-       padding: 5px;
-    }
+        .errorlist-wrapper {
+           background-color: red;
+           border-radius: 10px;
+           margin-bottom: 20%;
+           padding: 5px;
+        }
 
-    .errorlist {
-        font-size: 20px;
-        text-align: center;
-        margin-right: 15px;
-    }
+        .errorlist {
+            font-size: 20px;
+            text-align: center;
+            margin-right: 15px;
+        }
 
-    .chart {
-        background-color: #111;
-        padding: 20px;
-        border-radius: 50px;
-        box-shadow: 0px 0px 19px 2px rgba(17,17,17,1);
-    }
+        .chart_wrapper {
+            background-color: #111;
+            padding: 20px;
+            border-radius: 50px;
+            box-shadow: 0px 0px 19px 2px rgba(17,17,17,1);
+        }
+
+        .uniprot_id_data {
+            color: #f7f7f7;
+            font-size: 120%;
+            font-family: 'NTR';
+            text-decoration: none;
+        }
