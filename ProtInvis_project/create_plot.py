@@ -108,9 +108,8 @@ def make_scatter(proteome_datas, max_mol):
                                     ), 
                         ))
     fig.update_layout(
-                autosize=False, 
-                height=1000,
-                width=1300,
+                autosize=True,
+                height=1000, 
                 template="plotly_dark",
                 plot_bgcolor='rgba(247, 247, 247, 1)',
                 paper_bgcolor='rgba(17, 17, 17, 1)',

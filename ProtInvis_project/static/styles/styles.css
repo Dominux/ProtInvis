@@ -119,6 +119,7 @@ body {
         }
 
         .chart_wrapper {
+            width: 80%;
             background-color: #111;
             padding: 20px;
             border-radius: 50px;
@@ -130,4 +131,9 @@ body {
             font-size: 120%;
             font-family: 'NTR';
             text-decoration: none;
+        }
+
+        .svg-container {
+            width:100vw; 
+            height:1000px;
         }
