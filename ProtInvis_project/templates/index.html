@@ -3,27 +3,33 @@
 {% block title %} - Главная{% endblock %}
 
 {% block content %}
-<div class="form-style">
-    <form method="POST">
-        {{ form.hidden_tag() }}
-            <div>
-                {% if form.uniprot_id.errors %}
-                    <div class="errorlist-wrapper">
-                        <p>Ошибка</p>
-                        <div class="errorlist">
-                            {{ form.uniprot_id.errors[0] }}
+<div class="index-wrapper">
+    <div></div>
+    <div class="form-style">
+        <form method="POST">
+            {{ form.hidden_tag() }}
+                <div>
+                    {% if form.uniprot_id.errors %}
+                        <div class="errorlist-wrapper">
+                            <p>Ошибка</p>
+                            <div class="errorlist">
+                                {{ form.uniprot_id.errors[0] }}
+                            </div>
                         </div>
-                    </div>
-                {% endif %}
-
-                {{ form.uniprot_id.label }} <br>
-                {{ form.uniprot_id(size=32) }}  <br>
-            </div>
-            <div>
-                {{ form.the_dye.label }} <br>
-                {{ form.the_dye(size=1) }}  <br>
-            </div>
-        <p><button id="submit" class="sumbit" type="sumbit" name="Готово">Готово</button></p>
-    </form>
+                    {% endif %}    
+                </div>
+                <div id="js-uniprot_id" onmouseover="uniprotIdInfo(true)" onmousedown="uniprotIdInfo(false)">
+                    {{ form.uniprot_id.label }} <br>
+                    {{ form.uniprot_id(size=32) }}  <br>
+                </div>
+                <div id="the_dye" onmouseover="getElementId(this)">
+                    {{ form.the_dye.label }} <br>
+                    {{ form.the_dye(size=1) }}  <br>
+                </div>
+            <p><button id="submit" class="sumbit" type="sumbit" name="Готово">Готово</button></p>
+        </form>
+    </div>
+    <div></div>
 </div>
+<script src="../static/scripts/guides.js"></script>
 {% endblock %}

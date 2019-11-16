@@ -1,7 +1,7 @@
 from Bio.SeqUtils.ProtParam import ProteinAnalysis  
 from requests_html import HTMLSession
 from constants import dyes_list, aa_list, a_replace
-import plotly
+from plotly.utils import PlotlyJSONEncoder
 from plotly import graph_objs as go
 import pandas as pd
 import json
@@ -31,7 +31,7 @@ def get_seq(uniprot_id, session=session):
         except:
             pass
 
-def get_proteome(proteome_id, session=session):                                 
+def get_proteome(proteome_id, session=session):
     URL = f'https://www.uniprot.org/proteomes/{proteome_id}'
     while True:
         try:
@@ -116,7 +116,7 @@ def make_scatter(proteome_datas, max_mol):
                 xaxis=dict(title='Isoelectric point', range=[0, 14]),
                 yaxis=dict(title='Molecular weight', range=[max_mol*1.1, 0]),
             )
-    graphJSON = json.dumps(fig, cls=plotly.utils.PlotlyJSONEncoder)
+    graphJSON = json.dumps(fig, cls=PlotlyJSONEncoder)
     return graphJSON
 
 def ploter(input_id, the_dye, session=session, dyes_list=dyes_list):
