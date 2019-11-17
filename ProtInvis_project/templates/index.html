@@ -4,8 +4,34 @@
 
 {% block content %}
 <div class="index-wrapper">
-    <div></div>
-    <div class="form-style">
+    <div class="guide" id="guideUniprotId">
+                
+        <h2>Uniprot id</h2><br>
+        <ol>
+            <li>
+                <p>Можете внести любое количество id белков <b>через пробел</b> с <a href="http://uniprot.org/uniprot/" target="_blank">базы данных белков</a>.<br>
+                </p>
+                <p>
+                    <div>
+                        Например:
+                        <input type="text" readonly="readonly" size="32" placeholder="B8D9R6 Q96IY4 P08673">
+                    </div>
+                </p>
+            </li>
+            <li>
+                <p>Можете внести один id протеома с <a href="http://uniprot.org/proteomes/" target="_blank">базы данных протеомов</a>.<br>
+                </p>
+                <p>
+                    <div>
+                        Например:
+                        <input type="text" readonly="readonly" size="32" placeholder="UP000007646">
+                    </div>
+                </p>
+            </li>
+        </ol>
+        
+    </div>
+    <div>
         <form method="POST">
             {{ form.hidden_tag() }}
                 <div>
@@ -18,18 +44,34 @@
                         </div>
                     {% endif %}    
                 </div>
-                <div id="js-uniprot_id" onmouseover="uniprotIdInfo(true)" onmousedown="uniprotIdInfo(false)">
+                <div id="js-uniprotId" onmouseover="getInfo(this, true)" onmousedown="getInfo(this, false)">
                     {{ form.uniprot_id.label }} <br>
                     {{ form.uniprot_id(size=32) }}  <br>
                 </div>
-                <div id="the_dye" onmouseover="getElementId(this)">
+                <div id="js-theDye" onmouseover="getInfo(this, true)" onmouseout="getInfo(this, false)">
                     {{ form.the_dye.label }} <br>
                     {{ form.the_dye(size=1) }}  <br>
                 </div>
             <p><button id="submit" class="sumbit" type="sumbit" name="Готово">Готово</button></p>
         </form>
     </div>
-    <div></div>
+    <div class="guide" id="guideTheDye">
+        
+        <h2>Краситель</h2>
+        <ul class="guide-ul">
+            <li>Выберите краситель из списка возможных</li>
+            <li>Каждый способен связываться с определёнными аминокислотами, и, если таковых не найдётся, то белок не окраситься</li>
+            <li>
+                <div>
+                    Например:
+                    <select disabled="disabled">
+                        <option value="1">Stain-free</option>
+                    </select>
+                </div>
+            </li>
+        </ul>
+
+    </div>
 </div>
 <script src="../static/scripts/guides.js"></script>
 {% endblock %}
