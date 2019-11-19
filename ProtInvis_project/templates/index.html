@@ -3,7 +3,7 @@
 {% block title %} - Главная{% endblock %}
 
 {% block content %}
-<div class="index-wrapper">
+<div class="index-wrapper" onmouseover="getInfo('visible')" onmouseout="getInfo('hidden')">
     <div class="guide" id="guideUniprotId">
                 
         <h2>Uniprot id</h2><br>
@@ -44,11 +44,11 @@
                         </div>
                     {% endif %}    
                 </div>
-                <div id="js-uniprotId" onmouseover="getInfo(this, true)" onmousedown="getInfo(this, false)">
+                <div>
                     {{ form.uniprot_id.label }} <br>
                     {{ form.uniprot_id(size=32) }}  <br>
                 </div>
-                <div id="js-theDye" onmouseover="getInfo(this, true)" onmouseout="getInfo(this, false)">
+                <div>
                     {{ form.the_dye.label }} <br>
                     {{ form.the_dye(size=1) }}  <br>
                 </div>
