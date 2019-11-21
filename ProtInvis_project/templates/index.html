@@ -4,12 +4,11 @@
 
 {% block content %}
 <div class="index-wrapper" onmouseover="getInfo('visible')" onmouseout="getInfo('hidden')">
-    <div class="guide" id="guideUniprotId">
-                
+    <div class="guide" id="guideUniprotId">              
         <h2>Uniprot id</h2><br>
         <ol>
             <li>
-                <p>Можете внести любое количество id белков <b>через пробел</b> с <a href="http://uniprot.org/uniprot/" target="_blank">базы данных белков</a>.<br>
+                <p>Можете внести несколько <b>(max ~ 250)</b> количество id белков <b>через пробел</b> с <a href="http://uniprot.org/uniprot/" target="_blank">базы данных белков</a>.<br>
                 </p>
                 <p>
                     <div>
@@ -19,7 +18,7 @@
                 </p>
             </li>
             <li>
-                <p>Можете внести один id протеома с <a href="http://uniprot.org/proteomes/" target="_blank">базы данных протеомов</a>.<br>
+                <p>Можете внести один id протеома <b>(max число белков ~ 35000)</b> с <a href="http://uniprot.org/proteomes/" target="_blank">базы данных протеомов</a>.<br>
                 </p>
                 <p>
                     <div>
@@ -28,8 +27,7 @@
                     </div>
                 </p>
             </li>
-        </ol>
-        
+        </ol>    
     </div>
     <div>
         <form method="POST">
@@ -56,7 +54,6 @@
         </form>
     </div>
     <div class="guide" id="guideTheDye">
-        
         <h2>Краситель</h2>
         <ul class="guide-ul">
             <li>Выберите краситель из списка возможных</li>
@@ -70,7 +67,6 @@
                 </div>
             </li>
         </ul>
-
     </div>
 </div>
 <script src="../static/scripts/guides.js"></script>

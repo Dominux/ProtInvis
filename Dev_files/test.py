@@ -1,3 +1,9 @@
+'''
+
+Парсер uniprot.org/uniprot для сбора id белков
+
+'''
+
 from requests_html import HTMLSession
 session = HTMLSession()
 
@@ -7,7 +13,7 @@ number = 25
 
 # Получаем все результаты
 kek = str()
-for x in range(12):
+for x in range(10):
 	url = base_url + str(number*x)
 	r = session.get(url)
 	for y in r.html.find('.entryID'):
