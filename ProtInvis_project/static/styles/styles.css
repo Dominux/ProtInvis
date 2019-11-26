@@ -144,6 +144,7 @@ body {
                 }
 
         .chart_wrapper {
+            color: white;
             width: 80%;
             background-color: #111;
             padding: 20px;
@@ -159,6 +160,29 @@ body {
         }
 
         .svg-container {
-            width:100vw; 
-            height:1000px;
+            width: 100vw; 
+            height: 1000px;
         }
+
+        .info-page-content {
+            width: 50%;
+            font-size: 120%;
+            text-align: left;
+            padding: 50px 50px 200px 50px;
+        }
+
+            .info-page-content_line {
+                padding: 20px;
+            }
+
+                .info-page-content_line > a,
+                .info-page-content_line > a:visited {
+                    color: red;
+                }
+
+            h1 {
+                text-align: center;
+                margin-top: 100px;
+            }
+
+
