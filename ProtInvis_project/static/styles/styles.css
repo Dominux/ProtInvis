@@ -43,11 +43,31 @@ body {
         margin: -25% 0 -29% 0;
     }
 
-.end_header {
+.end-header {
     height: 120px;
     width: 100%;
     background: #111;
 }
+
+    .navbar {
+        margin: auto;
+        height: 100%;
+        width: 68%;
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        align-items: center;
+        justify-items: center;
+    }
+
+        .navbar > a {
+            color: white;
+            font-size: 30px;
+            text-decoration: none;
+            text-shadow: 
+                        0px 0px 7px rgba(127, 127, 127, 0.75),
+                        0px 0px 15px rgba(17, 17, 17, 0.75),
+                        0px 0px 20px rgba(127, 127, 127, 0.5);   
+        }
 
 .content-wrapper {
     min-height: 1000px;
@@ -187,4 +207,9 @@ body {
                 margin: 100px 0 50px 0;
             }
 
-
+.footer {
+    text-align: center;
+    color: white;
+    padding: 25px;
+    font-size: 20px;
+} 
