@@ -88,11 +88,11 @@ def make_scatter(proteome_datas, max_mol):
         text = [iter_data[M][0] for M in range(len(iter_data))]
         if data == 0:
             color = 'red'
-            legend_name = f'Invisible: {len(text)}'
+            legend_name = f'Невидимые: {len(text)}'
             marker_line_width = 0
         else:
             color = 'limegreen'
-            legend_name = f'Visible: {len(text)}'
+            legend_name = f'Видимые: {len(text)}'
             marker_line_width = 1
         fig.add_trace(go.Scatter(
                             x=x, 

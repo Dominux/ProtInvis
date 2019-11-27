@@ -3,7 +3,7 @@ body {
     margin: 0;
     padding: 0;
     width: 100%;
-    font-family: "Comfortaa";
+    font-family: "Noto Sans";
 }
 
 .header {
@@ -50,7 +50,7 @@ body {
 }
 
 .content-wrapper {
-    height: 1400px;
+    min-height: 1000px;
     margin: 0 50px 50px 50px;
     background: #f7f7f7;
     border-radius: 50px;
@@ -66,6 +66,7 @@ body {
     }
 
         .index-wrapper {
+            margin: 200px 0 200px 0;
             display: grid;
             grid-template-columns: repeat(3, 1fr);
             grid-gap: 50px;
@@ -144,6 +145,7 @@ body {
                 }
 
         .chart_wrapper {
+            margin: 200px 0 200px 0;
             color: white;
             width: 80%;
             background-color: #111;
@@ -182,7 +184,7 @@ body {
 
             h1 {
                 text-align: center;
-                margin-top: 100px;
+                margin: 100px 0 50px 0;
             }
 
 
