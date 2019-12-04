@@ -1,5 +1,11 @@
+:root {
+  --bg-dark: #194366;
+  --text-dark: black;
+  --text-light: white;
+}
+
 body {
-    background-color: #111;
+    background-color: var(--bg-dark);
     margin: 0;
     padding: 0;
     width: 100%;
@@ -29,7 +35,7 @@ body {
 
     .protinvis_label {
         padding: 5% 0 0 16%;
-        color: #111;
+        color: var(--bg-light);
         font-size: 200px;
         font-family: 'NTR';
         text-decoration: none;
@@ -46,7 +52,7 @@ body {
 .end-header {
     height: 120px;
     width: 100%;
-    background: #111;
+    background: var(--bg-dark);
 }
 
     .navbar {
@@ -96,8 +102,8 @@ body {
                 padding: 100px 50px 100px 50px;
                 border-radius: 25px;
                 box-shadow: 0px 0px 19px 2px rgba(17,17,17,1);
-                background-color: #111;
-                color: #f7f7f7;
+                background-color: var(--bg-dark);
+                color: white;
                 font-size: 30px;
             }
 
@@ -166,9 +172,9 @@ body {
 
         .chart_wrapper {
             margin: 200px 0 200px 0;
-            color: white;
+            color: var(--text-light);
             width: 80%;
-            background-color: #111;
+            background-color: var(--bg-dark);
             padding: 20px;
             border-radius: 50px;
             box-shadow: 0px 0px 19px 2px rgba(17,17,17,1);
@@ -187,8 +193,8 @@ body {
         }
 
         .info-page-content {
-            width: 50%;
-            font-size: 120%;
+            width: 80%;
+            font-size: 140%;
             text-align: left;
             padding: 50px 50px 200px 50px;
         }
@@ -205,6 +211,7 @@ body {
             h1 {
                 text-align: center;
                 margin: 100px 0 50px 0;
+                font-size: 140%;
             }
 
 .footer {
