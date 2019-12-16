@@ -112,7 +112,7 @@ def make_scatter(proteome_datas, max_mol):
                 height=1000, 
                 template="plotly_dark",
                 plot_bgcolor='rgba(247, 247, 247, 1)',
-                paper_bgcolor='rgba(17, 17, 17, 1)',
+                paper_bgcolor='rgba(25, 67, 102, 1)',
                 xaxis=dict(title='Isoelectric point', range=[0, 14]),
                 yaxis=dict(title='Molecular weight', range=[max_mol*1.1, 0]),
             )

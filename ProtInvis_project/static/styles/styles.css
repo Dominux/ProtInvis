@@ -2,6 +2,7 @@
   --bg-dark: #194366;
   --text-dark: black;
   --text-light: white;
+  --text-red: #f55;
 }
 
 body {
@@ -9,7 +10,7 @@ body {
     margin: 0;
     padding: 0;
     width: 100%;
-    font-family: "Noto Sans";
+    font-family: "Arial";
 }
 
 .header {
@@ -138,7 +139,7 @@ body {
             }
 
             .errorlist-wrapper {
-                background-color: red;
+                background-color: var(--text-red);
                 border-radius: 10px;
                 margin-bottom: 20%;
                 padding: 5px;
@@ -205,7 +206,7 @@ body {
 
                 .info-page-content_line > a,
                 .info-page-content_line > a:visited {
-                    color: red;
+                    color: var(--text-red);
                 }
 
             h1 {
